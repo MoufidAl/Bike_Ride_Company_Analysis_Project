@@ -3,7 +3,7 @@ The capstone project for the Professional Google Data Analytics Certificate Prog
 
 -- In this stage, I will be planning the best tools to utilize in this project and breaking down the request / task of the project
 
-**The Scenario **
+**The Scenario**
 
 I am a junior data analyst working in the marketing analyst team at Cyclistic, a bike-share company in Chicago. The director
 of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, I need to understand how casual riders and annual members use Cyclistic bikes differently.
