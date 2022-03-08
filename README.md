@@ -14,7 +14,7 @@ of marketing believes the company’s future success depends on maximizing the n
 
 I will design a new marketing strategy to convert casual riders into annual members. 
 
-The data is provided through the company's internal dataset and made available by Motivate International Inc. the data consists of 12 months of bike_ride activities from January of 2020 to January of 2021. 
+The data is provided through the company's internal dataset and made available by Motivate International Inc. the data consists of 12 months of bike_ride activities from January of 2021 to December of 2021 
 
 
 **Limitations on the project** 
@@ -28,6 +28,7 @@ this stage is very important before starting the cleaing and analysis processees
 
 The goal in this stage is to check the data for errors, choosing the right tools, transform the data to work on it effectively, and document the cleaning process
 
-I have chosen to use R to review the data, clean it, and prepare it for analysis. more details can be found in the code document.
+I have chosen to use R to review the data, clean it, and prepare it for analysis. 
+more details can be found in the code document.
 
 
