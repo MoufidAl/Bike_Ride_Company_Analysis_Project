@@ -12,5 +12,10 @@ of marketing believes the company’s future success depends on maximizing the n
 
 I will design a new marketing strategy to convert casual riders into annual members. 
 
-The data is provided through the company's internal dataset. the data consists of 12 months of bike_ride activities from January of 2020 to January of 2021. 
+The data is provided through the company's internal dataset and made available by Motivate International Inc. the data consists of 12 months of bike_ride activities from January of 2020 to January of 2021. 
+
+
+**Limitations on the project** 
+
+prohibited from using riders' personally identifiable information:I won’t be able to connect pass purchases to credit card numbers to determine if casual riders live in the Cyclistic service area or if they have purchased multiple single passes.
 
