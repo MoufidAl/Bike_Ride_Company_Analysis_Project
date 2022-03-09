@@ -1,0 +1,42 @@
+#In this stage of the cleaning process, I decided to make sure I have all the CSV files provided 
+#combined into one file to make the analysis process accurate and smooth. 
+
+#Before we begin, we need to call the libraries we are planning on utilizing in the project.
+#(assuming all packages are already installed)
+
+library(skimr)
+library(janitor)
+library(lubridate)
+library(tidyverse)
+
+#At this stage, we are ready to import our data and assign newer names to the files if necessary. 
+#since the activity falls in one year, I have decided to rename the files according to the month for easier reference.
+
+trips_Jan <- read.csv('202101-divvy-tripdata.csv')
+trips_Feb <- read.csv('202102-divvy-tripdata.csv')
+trips_Mar <- read.csv('202103-divvy-tripdata.csv')
+trips_Apr <- read.csv('202104-divvy-tripdata.csv')
+trips_May <- read.csv('202105-divvy-tripdata.csv')
+trips_Jun <- read.csv('202106-divvy-tripdata.csv')
+trips_Jul <- read.csv('202107-divvy-tripdata.csv')
+trips_Aug <- read.csv('202108-divvy-tripdata.csv')
+trips_Sep <- read.csv('202109-divvy-tripdata.csv')
+trips_Oct <- read.csv('202110-divvy-tripdata.csv')
+trips_Nov <- read.csv('202111-divvy-tripdata.csv')
+trips_Dec <- read.csv('202112-divvy-tripdata.csv')
+
+# since I am working in R, I know that I can't combine these files if they have different column attributes. 
+#for example if in certain months column X had some character values (strings) when it should be integer across all months in that column. 
+# R wont be able to combine them so we need to make sure we clean the data and adjust it accordingly. 
+
+#This step can be done quickly as well using SQL per the below: 
+
+Create table Trips_Data AS 
+(Select*
+ From
+  202101-divvy-tripdata.csv
+ Union.
+    .
+ This step to be repeated for each month.
+ 
+ 
