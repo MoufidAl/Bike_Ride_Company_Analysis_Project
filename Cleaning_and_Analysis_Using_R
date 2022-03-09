@@ -1,1 +1,33 @@
+---
+title: "Google_Data_Analytics_Project 1"
+author: "Moufid Alsaig"
+date: '2022-03-09'
+output: html_document
+---
+## More details on steps can be found on GitHub
 
+## First: tools to be utilized in this project.
+
+```{r}
+library(skimr)
+library(janitor)
+library(lubridate)
+library(tidyverse)
+```
+
+## Second: import data and assign easier names
+## since all acitivity falls in one year.
+## I named files according to the month for easier reference.
+```{r}
+trips_Jan <- read.csv('202101-divvy-tripdata.csv')
+trips_Feb <- read.csv('202102-divvy-tripdata.csv')
+trips_Mar <- read.csv('202103-divvy-tripdata.csv')
+trips_Apr <- read.csv('202104-divvy-tripdata.csv')
+trips_May <- read.csv('202105-divvy-tripdata.csv')
+trips_Jun <- read.csv('202106-divvy-tripdata.csv')
+trips_Jul <- read.csv('202107-divvy-tripdata.csv')
+trips_Aug <- read.csv('202108-divvy-tripdata.csv')
+trips_Sep <- read.csv('202109-divvy-tripdata.csv')
+trips_Oct <- read.csv('202110-divvy-tripdata.csv')
+trips_Nov <- read.csv('202111-divvy-tripdata.csv')
+trips_Dec <- read.csv('202112-divvy-tripdata.csv')
