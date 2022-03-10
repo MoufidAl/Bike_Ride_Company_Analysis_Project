@@ -4,9 +4,9 @@ author: "Moufid Alsaig"
 date: '2022-03-09'
 output: html_document
 ---
-## More details on steps can be found on GitHub
+# More details on steps can be found on GitHub
 
-## First: tools to be utilized in this project.
+# tools to be utilized in this project.
 
 ```{r}
 library(skimr)
@@ -15,9 +15,8 @@ library(lubridate)
 library(tidyverse)
 ```
 
-## Second: import data and assign easier names
-## since all acitivity falls in one year.
-## I named files according to the month for easier reference.
+# import data and assign easier names.
+# since all acitivity falls in one year, I named files according to the month for easier reference.
 ```{r}
 trips_Jan <- read.csv('202101-divvy-tripdata.csv')
 trips_Feb <- read.csv('202102-divvy-tripdata.csv')
@@ -31,3 +30,74 @@ trips_Sep <- read.csv('202109-divvy-tripdata.csv')
 trips_Oct <- read.csv('202110-divvy-tripdata.csv')
 trips_Nov <- read.csv('202111-divvy-tripdata.csv')
 trips_Dec <- read.csv('202112-divvy-tripdata.csv')
+```
+# Viewing the data briefly using Colnames or head: 
+
+```{r}
+head(trips_Jan)
+head(trips_Feb)
+head(trips_Mar)
+head(trips_Apr)
+head(trips_May)
+head(trips_Jun)
+head(trips_Jul)
+head(trips_Aug)
+head(trips_Sep)
+head(trips_Oct)
+head(trips_Nov)
+head(trips_Dec)
+```
+# or 
+
+colnames(trips_Jan) ...etc
+
+# but we also should look at the entire dataset. using View (preferably for each month):
+
+View(trips_Jan)...etc
+
+# Since we have 12 different files, it would be highly impractical to do analysis on each file and therefore,
+  our goal is to integrate the data into one large file so we can perform analysis and visualizations.
+
+# Therefore, we need make sure all the columns have matching data attributes (type of data) in each file. 
+# we can do this manually by using the str function: 
+
+```{r}
+str(trips_Jan)
+str(trips_Feb)
+str(trips_Mar)
+str(trips_Apr)
+str(trips_May)
+str(trips_Jun)
+str(trips_Jul)
+str(trips_Aug)
+str(trips_Sep)
+str(trips_Oct)
+str(trips_Nov)
+str(trips_Dec)
+```
+
+# or 
+
+Have R do it for us by using the the compare_df_cols function: 
+
+```{r}
+compare_df_cols(trips_Jan, trips_Feb, trips_Mar, trips_Apr, trips_May, trips_Jun, trips_Jul, trips_Aug, trips_Sep, trips_Oct, trips_Nov, trips_Dec, return = "mismatch")
+```
+
+# The function confirmed no anomolies or discrepancies in data types. 
+
+# combine files: 
+
+```{r}
+trips_2021 <- bind_rows(trips_Jan, trips_Feb, trips_Mar, trips_Apr, trips_May, trips_Jun, trips_Jul, trips_Aug, trips_Sep, trips_Oct, trips_Nov, trips_Dec)
+```
+
+# to take a look at the massive file: 
+
+```{r}
+View(trips_2021)
+```
+The result is a very large file with over 5M entries.
+
+
+
