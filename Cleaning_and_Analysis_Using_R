@@ -16,7 +16,7 @@ library(tidyverse)
 ```
 
 # import data and assign easier names.
-# since all acitivity falls in one year, I named files according to the month for easier reference.
+
 ```{r}
 trips_Jan <- read.csv('202101-divvy-tripdata.csv')
 trips_Feb <- read.csv('202102-divvy-tripdata.csv')
@@ -55,10 +55,10 @@ colnames(trips_Jan) ...etc
 
 View(trips_Jan)...etc
 
-# Since we have 12 different files, it would be highly impractical to do analysis on each file and therefore,
-  our goal is to integrate the data into one large file so we can perform analysis and visualizations.
+# Since we have 12 different files, it would be highly impractical to do analysis on each file and must integrate them.
 
 # Therefore, we need make sure all the columns have matching data attributes (type of data) in each file. 
+
 # we can do this manually by using the str function: 
 
 ```{r}
@@ -78,7 +78,7 @@ str(trips_Dec)
 
 # or 
 
-Have R do it for us by using the the compare_df_cols function: 
+# Have R do it for us by using the the compare_df_cols function: 
 
 ```{r}
 compare_df_cols(trips_Jan, trips_Feb, trips_Mar, trips_Apr, trips_May, trips_Jun, trips_Jul, trips_Aug, trips_Sep, trips_Oct, trips_Nov, trips_Dec, return = "mismatch")
@@ -97,7 +97,17 @@ trips_2021 <- bind_rows(trips_Jan, trips_Feb, trips_Mar, trips_Apr, trips_May, t
 ```{r}
 View(trips_2021)
 ```
-The result is a very large file with over 5M entries.
+# The result is a very large file with over 5M entries.
+
+# Before I proceed in manipulating the integrated file for cleaning and analysis, I want to save an original copy to make sure I can revert back to it if needed.
+
+```{r}
+write.csv(trips_2021, "C:\\X\\X\\X\\Google_Data_Analytics_Project\\Cyclistic_Integrated_Original", row.names = FALSE)
+```
+
+# Upon initial review of the data, I realized there were missing values for January in the end_station_name and end_station_Id.
+# In addition, the 'started_at' and 'ended_at' columns were characters instead of date-time - these will need to be fixed. 
+
 
 
 
