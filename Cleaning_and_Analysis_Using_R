@@ -108,6 +108,22 @@ write.csv(trips_2021, "C:\\X\\X\\X\\Google_Data_Analytics_Project\\Cyclistic_Int
 # Upon initial review of the data, I realized there were missing values for January in the end_station_name and end_station_Id.
 # In addition, the 'started_at' and 'ended_at' columns were characters instead of date-time - these will need to be fixed. 
 
+# to remove missing or null values I have written the below code: 
 
+```{r}
+New_trips_2021 <- trips_2021[!(is.na(trips_2021$ride_id) | trips_2021$ride_id =="" | 
+is.na(trips_2021$rideable_type) | trips_2021$rideable_type =="" | 
+is.na(trips_2021$started_at) | trips_2021$started_at =="" | 
+is.na(trips_2021$ended_at) | trips_2021$ended_at =="" | 
+is.na(trips_2021$start_station_name) | trips_2021$start_station_name =="" | 
+is.na(trips_2021$start_station_id) | trips_2021$start_station_id =="" | 
+is.na(trips_2021$end_station_name) | trips_2021$end_station_name == "" | 
+is.na(trips_2021$end_station_id) | trips_2021$end_station_id =="" | 
+is.na(trips_2021$start_lat) | trips_2021$start_lat == "" | 
+is.na(trips_2021$start_lng) | trips_2021$start_lng == "" | 
+is.na(trips_2021$end_lat) | trips_2021$end_lat == "" | 
+is.na(trips_2021$end_lng) | trips_2021$end_lng == "" | 
+is.na(trips_2021$member_casual) | trips_2021$member_casual == ""),]
+```
 
 
