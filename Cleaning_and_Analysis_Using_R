@@ -194,3 +194,78 @@ summary(New_trips_2021)
 ```{r}
 New_trips_2021$ride_time <- difftime(New_trips_2021$started_at, New_trips_2021$ended_at)
 ```
+
+# We can test that our code ran well using the str function: 
+
+```{r}
+str(New_trips_2021)
+``` 
+
+# one thing we notice from the results of the str function is that the new column has a data type "difftime" instead of numeric
+# we need to change that in order to perform calculations. 
+
+```{r}
+New_trips_2021$ride_time <- as.numeric(as.character(New_trips_2021$ride_time))
+```
+
+#to confirm, let's run the str function again. 
+```{r}
+str(New_trips_2021)
+'data.frame':	4588302 obs. of  14 variables:
+ $ ride_id           : chr  "B9F73448DFBE0D45" "457C7F4B5D3DA135" "57C750326F9FDABE" "4D518C65E338D070" ...
+ $ rideable_type     : chr  "classic_bike" "electric_bike" "electric_bike" "electric_bike" ...
+ $ started_at        : POSIXlt, format: "2021-01-24 19:15:38" "2021-01-23 12:57:38" "2021-01-09 15:28:04" ...
+ $ ended_at          : POSIXlt, format: "2021-01-24 19:22:51" "2021-01-23 13:02:10" "2021-01-09 15:37:51" ...
+ $ start_station_name: chr  "California Ave & Cortez St" "California Ave & Cortez St" "California Ave & Cortez St" "California Ave & Cortez St" ...
+ $ start_station_id  : chr  "17660" "17660" "17660" "17660" ...
+ $ end_station_name  : chr  "Wood St & Augusta Blvd" "California Ave & North Ave" "Wood St & Augusta Blvd" "Wood St & Augusta Blvd" ...
+ $ end_station_id    : chr  "657" "13258" "657" "657" ...
+ $ start_lat         : num  41.9 41.9 41.9 41.9 41.9 ...
+ $ start_lng         : num  -87.7 -87.7 -87.7 -87.7 -87.7 ...
+ $ end_lat           : num  41.9 41.9 41.9 41.9 41.9 ...
+ $ end_lng           : num  -87.7 -87.7 -87.7 -87.7 -87.7 ...
+ $ member_casual     : chr  "member" "member" "casual" "casual" ...
+ $ ride_time         : num  433 272 587 537 609 ...
+ 
+ #Perfect! 
+ 
+ #now, let's take a look at the summary table for this dataset: 
+ 
+ ```{r}
+summary(New_trips_2021)
+ide_id          rideable_type        started_at                     ended_at                  
+ Length:4588302     Length:4588302     Min.   :2021-01-01 00:02:24   Min.   :2021-01-01 00:08:39  
+ Class :character   Class :character   1st Qu.:2021-06-04 17:34:07   1st Qu.:2021-06-04 17:55:22  
+ Mode  :character   Mode  :character   Median :2021-07-28 17:33:49   Median :2021-07-28 17:51:18  
+                                       Mean   :2021-07-25 06:16:42   Mean   :2021-07-25 06:38:31  
+                                       3rd Qu.:2021-09-18 15:36:13   3rd Qu.:2021-09-18 16:02:46  
+                                       Max.   :2021-12-31 23:59:48   Max.   :2022-01-03 17:32:18  
+ start_station_name start_station_id   end_station_name   end_station_id       start_lat    
+ Length:4588302     Length:4588302     Length:4588302     Length:4588302     Min.   :41.65  
+ Class :character   Class :character   Class :character   Class :character   1st Qu.:41.88  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :41.90  
+                                                                             Mean   :41.90  
+                                                                             3rd Qu.:41.93  
+                                                                             Max.   :42.06  
+   start_lng         end_lat         end_lng       member_casual        ride_time      
+ Min.   :-87.83   Min.   :41.65   Min.   :-87.83   Length:4588302     Min.   :  -6954  
+ 1st Qu.:-87.66   1st Qu.:41.88   1st Qu.:-87.66   Class :character   1st Qu.:    417  
+ Median :-87.64   Median :41.90   Median :-87.64   Mode  :character   Median :    732  
+ Mean   :-87.64   Mean   :41.90   Mean   :-87.64                      Mean   :   1309  
+ 3rd Qu.:-87.63   3rd Qu.:41.93   3rd Qu.:-87.63                      3rd Qu.:   1327  
+ Max.   :-87.53   Max.   :42.17   Max.   :-87.52                      Max.   :3356649
+
+# first thing I noticed here is that the shortest ride length or time is in the negative, which is impossible
+# this could be due to a lot of reasons including incorrect or reversed input - however, for this case study
+# we are going to remove all values below 0 
+
+```{r exclusion of unnecessary values}
+New_trips_2021 <- New_trips_2021[!(New_trips_2021$ride_time<0),]
+```
+
+
+
+
+
+
+
