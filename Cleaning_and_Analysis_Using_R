@@ -111,7 +111,7 @@ write.csv(trips_2021, "C:\\X\\X\\X\\Google_Data_Analytics_Project\\Cyclistic_Int
 # to remove missing or null values I have written the below code: 
 
 ```{r}
-New_trips_2021 <- trips_2021[!(is.na(trips_2021$ride_id) | trips_2021$ride_id =="" | 
+New_trips_2021_v1 <- trips_2021[!(is.na(trips_2021$ride_id) | trips_2021$ride_id =="" | 
 is.na(trips_2021$rideable_type) | trips_2021$rideable_type =="" | 
 is.na(trips_2021$started_at) | trips_2021$started_at =="" | 
 is.na(trips_2021$ended_at) | trips_2021$ended_at =="" | 
@@ -125,5 +125,9 @@ is.na(trips_2021$end_lat) | trips_2021$end_lat == "" |
 is.na(trips_2021$end_lng) | trips_2021$end_lng == "" | 
 is.na(trips_2021$member_casual) | trips_2021$member_casual == ""),]
 ```
+# to see the result of our code and make sure we do not see any null or blank spaces. 
+
+View(New_trips_2021_v1) 
+
 
 
