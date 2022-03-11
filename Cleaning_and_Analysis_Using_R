@@ -111,7 +111,7 @@ write.csv(trips_2021, "C:\\X\\X\\X\\Google_Data_Analytics_Project\\Cyclistic_Int
 # to remove missing or null values I have written the below code: 
 
 ```{r}
-New_trips_2021_v1 <- trips_2021[!(is.na(trips_2021$ride_id) | trips_2021$ride_id =="" | 
+New_trips_2021 <- trips_2021[!(is.na(trips_2021$ride_id) | trips_2021$ride_id =="" | 
 is.na(trips_2021$rideable_type) | trips_2021$rideable_type =="" | 
 is.na(trips_2021$started_at) | trips_2021$started_at =="" | 
 is.na(trips_2021$ended_at) | trips_2021$ended_at =="" | 
@@ -127,7 +127,38 @@ is.na(trips_2021$member_casual) | trips_2021$member_casual == ""),]
 ```
 # to see the result of our code and make sure we do not see any null or blank spaces. 
 
-View(New_trips_2021_v1) 
+View(New_trips_2021) 
+
+# Before we begin analyzing our data , there is a problem with the started_at and ended_at columns - they Character type data.
+# In order for our analysis to work, they have to be in date-time format: 
+
+```{r}
+New_trips_2021$started_at = strptime(New_trips_2021$started_at, format = "%Y-%m-%d %H:%M:%S")
+
+New_trips_2021$ended_at = strptime(New_trips_2021$ended_at, format = "%Y-%m-%d %H:%M:%S")
+```
+
+# To confirm our changes worked: 
+
+```{r}
+str(New_trips_2021)
+
+'data.frame':	4588302 obs. of  13 variables:
+ $ ride_id           : chr  "B9F73448DFBE0D45" "457C7F4B5D3DA135" "57C750326F9FDABE" "4D518C65E338D070" ...
+ $ rideable_type     : chr  "classic_bike" "electric_bike" "electric_bike" "electric_bike" ...
+ $ started_at        : POSIXlt, format: "2021-01-24 19:15:38" "2021-01-23 12:57:38" "2021-01-09 15:28:04" ...
+ $ ended_at          : POSIXlt, format: "2021-01-24 19:22:51" "2021-01-23 13:02:10" "2021-01-09 15:37:51" ...
+ $ start_station_name: chr  "California Ave & Cortez St" "California Ave & Cortez St" "California Ave & Cortez St" "California Ave & Cortez St" ...
+ $ start_station_id  : chr  "17660" "17660" "17660" "17660" ...
+ $ end_station_name  : chr  "Wood St & Augusta Blvd" "California Ave & North Ave" "Wood St & Augusta Blvd" "Wood St & Augusta Blvd" ...
+ $ end_station_id    : chr  "657" "13258" "657" "657" ...
+ $ start_lat         : num  41.9 41.9 41.9 41.9 41.9 ...
+ $ start_lng         : num  -87.7 -87.7 -87.7 -87.7 -87.7 ...
+ $ end_lat           : num  41.9 41.9 41.9 41.9 41.9 ...
+ $ end_lng           : num  -87.7 -87.7 -87.7 -87.7 -87.7 ...
+ $ member_casual     : chr  "member" "member" "casual" "casual" ..
+```
+This confirms our code worked as our started at and ended at columns are now Date-Time. 
 
 
 
