@@ -187,4 +187,10 @@ summary(New_trips_2021)
  3rd Qu.:-87.63   3rd Qu.:41.93   3rd Qu.:-87.63                     
  Max.   :-87.53   Max.   :42.17   Max.   :-87.52
 
+# There are some great insights from this, however, we are missing some items to enhance our calculations.  
 
+# we need to create a column containing the each ride's length: 
+
+```{r}
+New_trips_2021$ride_time <- difftime(New_trips_2021$started_at, New_trips_2021$ended_at)
+```
