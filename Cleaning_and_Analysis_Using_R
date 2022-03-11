@@ -263,6 +263,16 @@ ide_id          rideable_type        started_at                     ended_at
 New_trips_2021 <- New_trips_2021[!(New_trips_2021$ride_time<0),]
 ```
 
+# The date does appear to be missing some values that would help the analysis process - including showing which month, days, and 
+# days of the week are we seeing rides and creating columns to reflect this data would help us in the analysis and visualization.
+
+```{r}
+New_trips_2021$date <- as.Date(New_trips_2021$started_at)
+New_trips_2021$month <- format(as.Date(New_trips_2021$date), "%m")
+New_trips_2021$day <- format(as.Date(New_trips_2021$date), "%d")
+New_trips_2021$week_day <- format(as.Date(New_trips_2021$date), "%A")
+
+```
 
 
 
