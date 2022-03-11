@@ -37,4 +37,4 @@ In the processing stage, I realized that there a few ways we can differentiate b
 2. the type of bike casual riders use vs. members and what that could mean. 
 3. the area (start_station_names) and to see if we have a pattern of certain locations having more casual riders and why. 
 
-
+**Stage Three - Further Analysis and Visualization** 
