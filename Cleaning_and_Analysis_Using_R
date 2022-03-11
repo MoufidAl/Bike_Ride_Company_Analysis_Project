@@ -160,5 +160,31 @@ str(New_trips_2021)
 ```
 This confirms our code worked as our started at and ended at columns are now Date-Time. 
 
+# Now let's take a look at what the overall data is telling us : 
+
+```{r}
+summary(New_trips_2021)
+```
+ ride_id          rideable_type        started_at                     ended_at                  
+ Length:4588302     Length:4588302     Min.   :2021-01-01 00:02:24   Min.   :2021-01-01 00:08:39  
+ Class :character   Class :character   1st Qu.:2021-06-04 17:34:07   1st Qu.:2021-06-04 17:55:22  
+ Mode  :character   Mode  :character   Median :2021-07-28 17:33:49   Median :2021-07-28 17:51:18  
+                                       Mean   :2021-07-25 06:16:42   Mean   :2021-07-25 06:38:31  
+                                       3rd Qu.:2021-09-18 15:36:13   3rd Qu.:2021-09-18 16:02:46  
+                                       Max.   :2021-12-31 23:59:48   Max.   :2022-01-03 17:32:18  
+ start_station_name start_station_id   end_station_name   end_station_id       start_lat    
+ Length:4588302     Length:4588302     Length:4588302     Length:4588302     Min.   :41.65  
+ Class :character   Class :character   Class :character   Class :character   1st Qu.:41.88  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :41.90  
+                                                                             Mean   :41.90  
+                                                                             3rd Qu.:41.93  
+                                                                             Max.   :42.06  
+   start_lng         end_lat         end_lng       member_casual     
+ Min.   :-87.83   Min.   :41.65   Min.   :-87.83   Length:4588302    
+ 1st Qu.:-87.66   1st Qu.:41.88   1st Qu.:-87.66   Class :character  
+ Median :-87.64   Median :41.90   Median :-87.64   Mode  :character  
+ Mean   :-87.64   Mean   :41.90   Mean   :-87.64                     
+ 3rd Qu.:-87.63   3rd Qu.:41.93   3rd Qu.:-87.63                     
+ Max.   :-87.53   Max.   :42.17   Max.   :-87.52
 
 
