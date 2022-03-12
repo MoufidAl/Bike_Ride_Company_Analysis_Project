@@ -102,7 +102,7 @@ View(trips_2021)
 # Before I proceed in manipulating the integrated file for cleaning and analysis, I want to save an original copy to make sure I can revert back to it if needed.
 
 ```{r}
-write.csv(trips_2021, "C:\\X\\X\\X\\Google_Data_Analytics_Project\\Cyclistic_Integrated_Original", row.names = FALSE)
+write.csv(trips_2021, "C:\\X\\X\\X\\Google_Data_Analytics_Project\\Cyclistic_Integrated_Original.csv", row.names = FALSE)
 ```
 
 # Upon initial review of the data, I realized there were missing values for January in the end_station_name and end_station_Id.
@@ -273,7 +273,12 @@ New_trips_2021$day <- format(as.Date(New_trips_2021$date), "%d")
 New_trips_2021$week_day <- format(as.Date(New_trips_2021$date), "%A")
 
 ```
+# For visualization and further anaylsis I have decided to use Tableau. however, we need to export the dataframe into a csv file first
 
+```{r}
+write.csv(New_trips_2021, "C:\\Users\\moufi\\Documents\\Google_Data_Analytics_Project\\Cyclistic_Integrated_V2.csv", row.names = FALSE)
+
+```
 
 
 
