@@ -276,7 +276,7 @@ New_trips_2021$week_day <- format(as.Date(New_trips_2021$date), "%A")
 # For visualization and further anaylsis I have decided to use Tableau. however, we need to export the dataframe into a csv file first
 
 ```{r}
-write.csv(New_trips_2021, "C:\\Users\\moufi\\Documents\\Google_Data_Analytics_Project\\Cyclistic_Integrated_V2.csv", row.names = FALSE)
+write.csv(New_trips_2021, "C:\\x\\x\\x\\Google_Data_Analytics_Project\\Cyclistic_Integrated_V2.csv", row.names = FALSE)
 
 ```
 
