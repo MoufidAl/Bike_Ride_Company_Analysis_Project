@@ -31,10 +31,5 @@ The goal in this stage is to check the data for errors, choosing the right tools
 I have chosen to use R to review the data, clean it, and prepare it for analysis. 
 more details can be found in the code document.
 
-In the processing stage, I realized that there a few ways we can differentiate between the habits of members and casual riders in order to draw conclusions and provide better marketing strategies for casual riders to become members:
 
-1. the distance travelled 
-2. the type of bike casual riders use vs. members and what that could mean. 
-3. the area (start_station_names) and to see if we have a pattern of certain locations having more casual riders and why. 
-
-**Stage Three - Further Analysis and Visualization** 
+**Stage Three - Descriptive Analysis and Visualization** 
