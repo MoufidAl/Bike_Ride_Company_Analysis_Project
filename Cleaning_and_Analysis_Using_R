@@ -273,14 +273,50 @@ New_trips_2021$day <- format(as.Date(New_trips_2021$date), "%d")
 New_trips_2021$week_day <- format(as.Date(New_trips_2021$date), "%A")
 
 ```
-# For visualization and further anaylsis I have decided to use Tableau. however, we need to export the dataframe into a csv file first
 
-```{r}
-write.csv(New_trips_2021, "C:\\x\\x\\x\\Google_Data_Analytics_Project\\Cyclistic_Integrated_V2.csv", row.names = FALSE)
+# The next step is to do some descriptive analysis before visualization: 
+
+```{r summary of ride_time columns for both types of riders}
+summary(New_trips_2021$ride_time)
 
 ```
+# Now I am going to compare the stats between the two types of riders
+```{r}
+aggregate(New_trips_2021$ride_time ~ New_trips_2021$member_casual, FUN = mean)
+aggregate(New_trips_2021$ride_time ~ New_trips_2021$member_casual, FUN = median)
+aggregate(New_trips_2021$ride_time ~ New_trips_2021$member_casual, FUN = max)
+aggregate(New_trips_2021$ride_time ~ New_trips_2021$member_casual, FUN = min)
+```
 
+# I am also going to be looking at the average ride time by each day for members vs. casual riders 
 
+```{r}
+aggregate(New_trips_2021$ride_time ~ New_trips_2021$member_casual + New_trips_2021$ week_day, FUN = mean)
+```
+# this yields the below result. the problem here is that the dates are out of order:
+Description:df [14 x 3]
+New_trips_2021$member_casual
+<chr>
+New_trips_2021$week_day
+<chr>
+New_trips_2021$ride_time
+<dbl>
+casual	Friday	1855.0934
+member	Friday	767.5400
+casual	Monday	1958.1931
+member	Monday	763.5012
+casual	Saturday	2092.1901
+member	Saturday	889.1776
+casual	Sunday	2256.2519
+member	Sunday	911.9215
+casual	Thursday	1680.6698
+member	Thursday	741.2177....
 
+#let's fix that : 
+```{r}
+New_trips_2021$week_day <- ordered(New_trips_2021$week_day, levels = c("Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+```
+# Now it is time to analyze ridership data by type and weekday - this will give us a much clearer picture
+on days of the week usage per customer type. 
 
 
