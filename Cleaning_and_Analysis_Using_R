@@ -319,4 +319,10 @@ New_trips_2021$week_day <- ordered(New_trips_2021$week_day, levels = c("Sunday",
 # Now it is time to analyze ridership data by type and weekday - this will give us a much clearer picture
 on days of the week usage per customer type. 
 
-
+```{r}
+New_trips_2021 %>%
+  mutate(weekday = wday(started_at, label = TRUE)) %>%
+  group_by(member_casual, weekday) %>%
+  summarise(number_of_rides = n(), average_duration = mean(ride_time)) %>%
+  arrange(member_casual, weekday)
+```
