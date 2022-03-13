@@ -326,3 +326,32 @@ New_trips_2021 %>%
   summarise(number_of_rides = n(), average_duration = mean(ride_time)) %>%
   arrange(member_casual, weekday)
 ```
+# Let's do some basic visualization: 
+
+New_trips_2021 %>%
+  mutate(weekday = wday(started_at, label = TRUE)) %>%
+  group_by(member_casual, weekday) %>%
+  summarise(number_of_rides = n(), average_duration = mean(ride_time)) %>%
+  arrange(member_casual, weekday) %>%
+  ggplot(aes(x = weekday, y = number_of_rides, fill = member_casual)) +
+  geom_col(position = "dodge")
+  
+  # now let us look at the average duration of the trips per customer type and day of the week
+  
+  ```{r}
+New_trips_2021 %>% 
+  mutate(weekday = wday(started_at, label = TRUE)) %>% 
+  group_by(member_casual, weekday) %>% 
+  summarise(number_of_rides = n(),average_duration = mean(ride_time)) %>% 
+  arrange(member_casual, weekday)  %>% 
+  ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
+  geom_col(position = "dodge")
+
+```
+
+# Now i am going to save the file into a new csv, and take the file and analyze it further with tableau.
+
+```{r}
+write.csv(New_trips_2021,"C:\\x\\x\\x\\Google_Data_Analytics_Project\\Cyclistic_Integrated_Final.csv", row.names = FALSE )
+```
+
