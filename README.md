@@ -33,3 +33,10 @@ more details can be found in the code document.
 
 
 **Stage Three - Descriptive Analysis and Visualization** 
+
+I have utilized R for some basic descreptive analysis and visualization and then used Tableau to create more insight. 
+(linke for tableau is available here: https://public.tableau.com/app/profile/moufid.alsaig#!/?newProfile=&activeTab=0 ) 
+
+**Stage Four - Conclusions and Recommendations** 
+
+
