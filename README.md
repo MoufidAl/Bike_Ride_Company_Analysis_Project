@@ -38,5 +38,4 @@ I have utilized R for some basic descreptive analysis and visualization and then
 (linke for tableau is available here: https://public.tableau.com/app/profile/moufid.alsaig#!/?newProfile=&activeTab=0 ) 
 
 **Stage Four - Conclusions and Recommendations** 
-
-
+In progress - the project is still missing a final presenatation and more visualizations to carry the analysis to fruition. 
