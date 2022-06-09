@@ -1,0 +1,62 @@
+The steps I followed to begin the analysis:
+
+1. Download the individual CSV documents (I had 12 files for each month fo the year).
+2. Import each into separate tables.
+3. Combine them all into one table.
+4. Inspect the data for any anomolies/ items that need to be cleaned up.
+5. Identify and exclude data with anomalies
+6. Create some queries for data visualisation.
+
+// combining data into one table
+
+drop table Trips_Data;
+
+create table Trips_Data as
+(select *
+from trips_Jan
+
+union
+
+select *
+from trips_Feb
+union
+
+select *
+from trips_Mar
+union
+
+select *
+from trips_Apr
+union
+
+select *
+from trips_May
+union
+
+select *
+from trips_Jun
+union
+
+select *
+from trips_Jul
+union
+
+select *
+from trips_Aug
+union
+
+select *
+from trips_Sep
+union
+
+select *
+from trips_Oct
+union
+
+select *
+from trips_Nov
+union
+
+select *
+from trips_Dec
+);
