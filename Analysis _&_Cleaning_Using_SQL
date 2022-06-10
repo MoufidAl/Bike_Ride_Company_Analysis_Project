@@ -60,3 +60,122 @@ union
 select *
 from trips_Dec
 );
+
+-------
+// I wanted to add a column to ease the calculation for the duration of the trips in the database. 
+
+select count(1)
+from Trips_Data;
+
+// calculating the length of the trips
+
+select ended_at, started_at, (ended_at - started_at) * 1440, round((ended_at - started_at) * 1440) 
+from Trips_Data;
+
+update Trips_Data
+set trip_length_mins = round((ended_at - started_at) * 1440);
+
+// Now that the data is in a format that is consitent and under one table. we can begin to look for any anomolies that will negatively impact the results of the analysis.
+
+select distinct member_casual
+from Trips_Data;
+
+select min (end_lng), max(end_lng), min (end_lat), max(end_lat), min (start_lng), max(start_lng), min (start_lat), max(start_lat)
+from Trips_Data;
+
+// At this point I am trying to make sure that any value that is NULL is excluded from the analysis (Null does not equal 0 or empty).
+
+select end_station_id, end_station_name, count(1)
+from Trips_Data
+group by end_station_id, end_station_name;
+
+select rideable_type, count(1)
+from Trips_Data
+group by rideable_type;
+
+select ride_id, count(1)
+from Trips_Data
+group by ride_id
+having count(1) > 1;
+
+select *
+from Trips_Data
+where started_at is null and ended_at is null;
+
+select *
+from Trips_Data
+where started_at is null or ended_at is null;
+
+select *
+from Trips_Data
+where exclude is null
+and (start_lat is null or end_lat is null);
+
+select *
+from Trips_Data
+where exclude is null
+and (start_lng is null or end_lng is null);
+
+select *
+from Trips_Data
+where exclude is null
+and member_casual is null;
+
+select *
+from Trips_Data
+where exclude is null
+and rideable_type is null;
+
+
+// I also realized that some start times were higher than end times so I needed to exclude cases where start time is greater than end time.
+
+select count(1)
+from Trips_Data
+where started_at >= ended_at;
+
+update Trips_Data
+set exclude = 'Y'
+where started_at >= ended_at;
+
+
+--exclude cases where trip length less than or equal to 0
+select *
+from Trips_Data
+order by trip_length_mins asc;
+
+update Trips_Data
+set exclude = 'Y'
+where trip_length_mins <= 0;
+
+select *
+from Trips_Data
+where exclude is null
+order by trip_length_mins asc;
+
+select trip_length_mins, count(1)
+from Trips_Data
+where exclude is null
+group by trip_length_mins;
+
+// There we were also cases where the Trip lenght was equal to 0 or less than 0 which does not make any sense and would causes errors in the analysis.
+
+// we had to remove these cases before proceeding in doing any analysis.
+
+select *
+from Trips_Data
+order by trip_length_mins asc;
+
+update Trips_Data
+set exclude = 'Y'
+where trip_length_mins <= 0;
+
+select *
+from Trips_Data
+where exclude is null
+order by trip_length_mins asc;
+
+select trip_length_mins, count(1)
+from Trips_Data
+where exclude is null
+group by trip_length_mins;
+
